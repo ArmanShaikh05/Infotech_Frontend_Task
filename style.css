@@ -145,7 +145,7 @@ DESIGNING HERO SECTION
 
 .hero-container {
   display: grid;
-  grid-template-columns: 35rem auto;
+  grid-template-columns: 40rem auto;
   height: 100%;
   min-height: 42rem;
   overflow: hidden;
@@ -167,7 +167,7 @@ Designing hero left section
 }
 
 .hero-box-title {
-  font-size: 3.5rem;
+  font-size: 64px;
   font-weight: bold;
   line-height: 140%;
   text-transform: capitalize;
@@ -292,6 +292,8 @@ Media Queries for Hero Section
 
   .hero-box-title {
     text-align: center;
+    width: 85%;
+    margin-inline: auto;
   }
 
   .hero-decs-text {
@@ -321,6 +323,9 @@ Media Queries for Hero Section
 
   .hero-right-section {
     height: 28rem;
+  }
+  .hero-box-title {
+    font-size: 48px;
   }
 }
 
