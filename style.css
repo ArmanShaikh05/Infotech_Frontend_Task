@@ -63,22 +63,8 @@ UTILITY CLASSES
   text-transform: capitalize;
 }
 
-/**
-UTILITY CLASSES MEDIA QUERIES
-*/
-
-@media (max-width: 600px) {
-  .primary-btn,
-  .secondary-btn {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 420px) {
-  .primary-btn,
-  .secondary-btn {
-    font-size: 10px;
-  }
+.red-text {
+  color: var(--red-color);
 }
 
 /**
@@ -97,10 +83,10 @@ header {
   justify-content: space-between;
 }
 
-.navbar-container img {
+.navbar-container > img {
   width: 22vw;
   max-width: 200px;
-  min-width: 120px;
+  min-width: 125px;
 }
 
 .navbar-container .navlinks-box {
@@ -120,6 +106,12 @@ header {
   color: var(--red-color);
 }
 
+.navbar-container .hamburgur-menu {
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+
 /**
 Media Queries for Navbar
 */
@@ -128,6 +120,111 @@ Media Queries for Navbar
   .navbar-container .navlinks-box {
     display: none;
   }
+
+  .navbar-container .navbar-primary-btn {
+    display: none;
+  }
+
+  .navbar-container .hamburgur-menu {
+    display: block;
+  }
+}
+
+/**
+SIDEBAR DESIGN
+*/
+
+.sidebar-overlay {
+  visibility: hidden;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.sidebar-overlay.open {
+  visibility: visible;
+}
+
+.sidebar-box {
+  position: absolute;
+  height: 100vh;
+  right: -100%;
+  top: 0;
+  width: 85%;
+  max-width: 400px;
+  background-color: #ffe3e8;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.sidebar-box.open {
+  right: 0;
+}
+
+.sidebar-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+
+.sidebar-header > img {
+  width: 22vw;
+  max-width: 200px;
+  min-width: 125px;
+}
+
+.sidebar-close-btn {
+  width: 32px;
+  height: 32px;
+}
+
+.sidebar-close-btn svg {
+  fill: var(--red-color);
+}
+
+.sidebar-navlinks-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 16px;
+  gap: 40px;
+}
+
+.sidebar-navlink-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.sidebar-navlink-item > svg > path,
+.sidebar-navlink-item > svg > g {
+  fill: black;
+  transition: all 0.2s ease;
+}
+
+.sidebar-navlink-item.active {
+  color: var(--red-color);
+}
+
+.sidebar-navlink-item.active > svg > path,
+.sidebar-navlink-item.active > svg > g {
+  fill: var(--red-color);
+}
+
+.sidebar-primary-btn {
+  width: 90%;
 }
 
 /**
@@ -341,8 +438,7 @@ Media Queries for Hero Section
   }
 
   .hero-decs-text {
-    line-height: 30px;
-    font-size: 14px;
+    line-height: 34px;
   }
 
   .hero-left-section {
@@ -351,14 +447,14 @@ Media Queries for Hero Section
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 450px) {
   .hero-left-section {
     gap: 2rem;
   }
 
   .hero-box-title {
-    font-size: 30px;
-    width: 18rem;
+    font-size: 34px;
+    width: 22rem;
   }
 
   .hero-box-title span::after {
@@ -367,8 +463,6 @@ Media Queries for Hero Section
   }
 
   .hero-decs-text {
-    line-height: 25px;
-    font-size: 12px;
     width: 90%;
     margin-inline: auto;
   }
@@ -378,17 +472,22 @@ Media Queries for Hero Section
     gap: 1rem;
   }
 
-  .hero-btn-container .primary-btn,
-  .hero-btn-container .secondary-btn {
-    width: 80%;
-  }
-
   .hero-right-section .ellipse-1 {
     max-width: 95%;
   }
 
   .hero-right-section {
     height: 24rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero-box-title {
+    width: 18rem;
+  }
+
+  .hero-decs-text {
+    font-size: 14px;
   }
 }
 
@@ -430,7 +529,7 @@ DESIGNING FEATURES SECTION
 .features-box {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 20px;
 }
@@ -448,10 +547,13 @@ DESIGNING FEATURES SECTION
   font-size: 20px;
   font-weight: 500;
   text-transform: capitalize;
+  text-align: center;
 }
 
 .feature-box-desc {
   font-size: 18px;
+  color: #595959;
+  text-align: center;
 }
 
 /**
@@ -464,12 +566,15 @@ Media Queries for Features Section
   }
 }
 
+@media (max-width: 768px) {
+  .features-header .features-title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
 @media (max-width: 500px) {
   .features-cards-container {
     grid-template-columns: 1fr;
-  }
-
-  .features-header .features-title {
-    font-size: 20px;
   }
 }
